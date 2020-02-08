@@ -10,19 +10,13 @@ import {
 } from 'react-native';
 import estilo from "./estilo";
 
-const Comentarios = ( {comentarios} ) => {
+const Comentarios = ( {comentarios, adicionarComentario} ) => {
 
     const [estComentarios, setComentarios] = useState(comentarios);
 
-    const adicionaComentario = () => {
+    const comentar = () => {
         campoInput.clear()
-
-        novoComentario = {
-            date: Date.now(),
-            text: conteudoCampoInput,
-            userName: "Fabão"
-        }
-
+        const novoComentario = adicionarComentario(conteudoCampoInput, "Fabão")        
         setComentarios([...estComentarios, novoComentario])
     }
 
@@ -48,7 +42,7 @@ const Comentarios = ( {comentarios} ) => {
                     style={estilo.textInput}
                     onChangeText={texto => conteudoCampoInput = texto}
                 />
-                <TouchableOpacity onPress={adicionaComentario}>
+                <TouchableOpacity onPress={comentar}>
                     <Image
                         source={require("../../../res/img/send.png")}
                         style={estilo.imgSend}

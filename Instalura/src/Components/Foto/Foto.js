@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import estilo from "./estilo";
-import { pegarImgsLike, curtirFoto } from '../../api/curtiu';
 
 // Eu não desconstrui a props como fiz na classe Cabeçalho para ter as 2 opções no projeto
 const Foto = (props) => {
@@ -15,7 +14,7 @@ const Foto = (props) => {
   const [likes, setLikes] = useState(props.qtdeCurtidas);
 
   function clicouCurtir(){
-    let [qtde, curtiuNovo] = curtirFoto(likes, curtiu)
+    let [qtde, curtiuNovo] = props.curtirFoto(likes, curtiu)
     setLikes(qtde);
     setCurtiu(curtiuNovo);
   }
@@ -28,7 +27,7 @@ const Foto = (props) => {
       <Text>{props.descricao}</Text>
       <TouchableOpacity onPress={clicouCurtir}>
         <View style={estilo.viewLike}>
-          <Image source={ pegarImgsLike(curtiu) }
+          <Image source={ props.pegarImgsLike(curtiu) }
               style={estilo.like}
           />
           <Text>Curtiu {likes}</Text>
