@@ -6,8 +6,8 @@ import Login from "./src/Views/Login/Login"
 const App = () => {
 
   return (
-    <Feed/>
-    // <Login/>
+    // <Feed/>
+    <Login/>
   );
 };
 
